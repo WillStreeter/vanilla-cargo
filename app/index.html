@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vanilla OO</title>
+    <link rel="stylesheet" type="text/css" href="styles/css/main.css">
+    <script  src="vendor/bootstrap.js" type="text/javascript"></script>
+    <script  src="src/test1.js" type="text/javascript"></script>
+    <script  src="src/test2.js" type="text/javascript"></script>
+    <script  src="src/motorcade.js" type="text/javascript"></script>
+    <script  src="src/app.js"  type="text/javascript"></script>
+</head>
+<body>
+<!-- Fixed navbar -->
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Vanilla JS Examples</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#test1">Test1</a></li>
+                <li><a href="#test2">Test2</a></li>
+                <!--<li><a href="#test3">Test3</a></li>-->
+                <li><a href="#test4">Test4</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+  <div class="container">
+      <a  id="test1" ></a>
+      <div class="row test1">
+          <h2  class="text-success">Prime Numbers</h2>
+          <div class="col-rspns-10-offset-1">
+                <label> Write a function to print out the first 100 prime numbers.</label>
+          </div>
+          <div class="col-rspns-10-offset-1">
+              <div class="panel panel-default">
+                  <div class="panel-body">
+
+
+<pre class="text-muted">
+function getFirst100Primes() {
+    var first100Primes = [];
+    var n = 2;
+    do {
+        var sqrtn = Math.sqrt(n);
+        var isPrime =true;
+
+        for (var i = 2; i <= sqrtn; i++){
+            if (n % i === 0) {
+                isPrime = false;
+                break;
+            }
+        }
+
+        if (isPrime){
+            first100Primes.push(n);
+            isPrime = true;
+        }
+        n++;
+    } while (first100Primes.length < 100);
+ }
+
+</pre>
+
+                   </div>
+              </div>
+          </div>
+          <div class="col-rspns-btn-holder">
+              <button id='primeBtn' type="button" class="btn btn-success">1st 100 Prime</button>
+           </div>
+           <div class="col-rspns-output-holder">
+               <div class="panel panel-default">
+                   <div id="primeRslt" class="panel-body">
+
+                   </div>
+               </div>
+           </div>
+      </div>
+      <a  id="test2" ></a>
+      <div class="row test2">
+          <h2  class="text-success">DOM APIs</h2>
+          <label class="col-rspns-10-offset-1">Using the DOM APIs, write a routine to change every paragraph in a contenteditable div into a blockquote.</label>
+          </br>
+          <div class="col-rspns-10-offset-1">
+              <div class="panel panel-default">
+                  <div class="panel-body">
+
+<pre class="text-muted">
+function doTest2(e){
+    //stop and prevent e.
+    var element = document.querySelector('[contenteditable]');
+    var blocks = buildBlockQuotes(element.textContent);
+    empty_element( document.getElementById('blckRslt'));
+    document.getElementById('blckRslt').appendChild(blocks);
+}
+
+function buildBlockQuotes(someContents){
+    var newOutput = someContents.replace('&lt;p&gt;', '&lt;p>&lt;blockquote&gt;').replace('&lt;p&gt;', '&lt;p&gt;&lt;/blockquote&gt;');
+    var newPBQ = document.createElement('div');
+    newPBQ.className="dom-cnt-edtbl";
+    if(newOutput.length == 0){
+        newPBQ.innerHTML = someContents;
+    }else{
+        newPBQ.innerHTML = newOutput;
+    }
+    return newPBQ;
+}
+</pre>
+
+                  </div>
+              </div>
+          </div>
+          </br>
+          <div class="col-rspns-10-offset-1">
+            <label> Here is an example of text that one might enter:</label>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+  <pre>
+      Here's a little secret that might surprise meat-eaters: Vegetarians like to eat more than just salads.
+      &lt;p&gt;
+          We like a nice hearty sandwich as much as the next person. We like salty, cheap food, too.
+          And we'd eat a lot more of that stuff if only fast food restaurants were willing to sell it to us.
+      &lt;/p&gt;
+      And so it is, dear McDonald's, that I ask you: Please introduce a veggie burger.
+  </pre>
+                     </div>
+                 </div>
+              </label>
+          </div>
+          <div class="col-rspns-10-offset-1">
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                      <div id="contentEdit" contentEditable="true" class="test-2" >
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-rspns-btn-holder">
+              <button id='cntntEdtblBtn' type="button" class="btn btn-success">Get Block Quotes</button>
+          </div>
+          <div class="col-rspns-output-holder">
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                      <div id="blckRslt">
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <a  id="test4" ></a>
+      <div class="row test4">
+      <h2  class="text-success">Object Oriented Programming - Cargo Allocation</h2>
+      <div class="col-rspns-10-offset-1">
+          <label>
+              Given the following types of vehicles and their respective capacities:
+          </label>
+          <ul>
+              <li>SportsCar small trunk w/100lb capacity</li>
+              <li>FamilyCar large trunk w/300lb capacity </li>
+              <li>Truck 2 doors, bed w/1500lb capacity</li>
+              <li>MiniVan small rear storage area w/200lb capacit</li>
+              <li>CargoVan large rear storage area with 800lb capacity</li>
+          </ul>
+          <p>
+              Write a page/script using object oriented coding style with a text box for each each vehicle type, a text box
+              for the cargo to be allocated, and a calculate button. When the calculate button is clicked a div on the page
+              should have the cargo allocation written to it. Use of utilities like class.js are fine so long as they result in
+              clean and readable js.
+          </p>
+      </div>
+        <div class="col-rspns-12 text-center v-center">
+            <h1>Cargo&nbsp;<small>vanilla OOP js</small></h1>
+        </div>
+        <div class="col-rspns-6-offset-3">
+            <div class="flip">
+                <div id="cardrotator" class="card">
+                    <div class="face front">
+                        <div class="row">
+                            <h3 class="text-center">Cargo Allocation</h3>
+                            <form id="cargoInput" class="col-rspns-12" role="form">
+
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="face back">
+                        <div class="row">
+                            <div class="col-rspns-12">
+                                <div class="row">
+
+                                    <div id="closeBack" class="circle">
+                                        <div class="line one"></div>
+                                        <div class="line two"></div>
+                                    </div>
+
+                                    <h3 class="text-center">Allocated Load   </h3>
+                                    <div id ="outputAmnt" class="col-rspns-12 alct-cargo-lbl"> </div>
+                                    <div class="col-rspns-cls">
+                                    </div>
+                                    <div class="col-rspns-10-offset-1 alctd-tble">
+                                        <table id="payloadOutput" class=" table">
+
+
+
+                                        </table>
+                                    </div>
+                                    <div id="cargoRmng" class="col-rspns-12">
+
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </div>
+    </div> <!-- /row -->
+    <br><br><br><br><br>
+  </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            buildPageElements();
+        });
+    </script>
+  </div>
+</body>
+</html>

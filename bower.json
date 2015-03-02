@@ -1,0 +1,16 @@
+{
+  "name": "vanilla-cargo",
+  "version": "1.0.0",
+  "main": "vanilla-cargo.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "test",
+    "package.json",
+    "app",
+    "gulpfile.js"
+  ],
+  "dependencies": {
+    "bootstrap-sass":">=3.3.0"
+  }
+}
